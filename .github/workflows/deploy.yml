@@ -1,2 +1,2 @@
 on: [push, workflow_dispatch]
-jobs: {deploy: {runs-on: ubuntu-latest, steps: [{uses: actions/checkout@v4}, {env: {P: '${{ secrets.FTP_PASSWORD }}'}, run: 'curl --fail --ssl -T .htaccess --user "galabes:$P" ftp://ftp.cluster129.hosting.ovh.net/www/'}]}}
+jobs: {deploy: {runs-on: ubuntu-latest, steps: [{uses: actions/checkout@v4}, {env: {P: '${{ secrets.FTP_PASSWORD }}'}, run: 'curl --fail --ssl -T .htaccess --user "galabes:$P" ftp://ftp.cluster129.hosting.ovh.net/www/'}, {env: {P: '${{ secrets.FTP_PASSWORD_VIP }}'}, run: 'curl --fail --ssl -T vip/.htaccess --user "vipgalu:$P" ftp://ftp.cluster129.hosting.ovh.net/www/'}]}}
